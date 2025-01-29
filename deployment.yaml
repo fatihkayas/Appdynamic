@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: my-app-image:latest
+        image: nginx
         ports:
         - containerPort: 80
         volumeMounts:
@@ -23,7 +23,7 @@ spec:
       volumes:
       - name: local-storage
         hostPath:
-            path: /usr/share/nginx/html
+            path: /var/nginxserver
 
 ---
 apiVersion: v1
