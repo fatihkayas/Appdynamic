@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: parallel-job
+spec:
+  completions: 4
+  parallelism: 4
+  template:
+    spec:
+      containers:
+        - name: example-container
+          image: alpine
+          command: ["sh", "-c", "echo 'Processing...' && sleep 10 && exit 0"]
+      restartPolicy: Never
